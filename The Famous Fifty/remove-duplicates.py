@@ -17,6 +17,7 @@ def removeDuplicates(arr):
 
 # sorting method [T - O(nlogn)]
 
+'''
 def removeDuplicates(arr):
     if len(arr) == 0: # since we are reading the first element 
         return []
@@ -26,3 +27,16 @@ def removeDuplicates(arr):
         if arr[i] != arr[i-1]:
             noDuplicateArr.append(arr[i])
     return noDuplicateArr
+'''
+
+# hash table [T - ] 
+
+def removeDuplicates(arr):
+    visited = {}
+    for element in arr:
+        visited [element] = True
+    return list(visited.keys())
+
+arr = [4, 2, 3, 2, 4, 4, 1]
+result = removeDuplicates(arr)
+print(result)
