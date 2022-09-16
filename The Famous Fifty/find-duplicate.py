@@ -20,8 +20,27 @@ def findDuplicate(arr):
 '''
 # sorting approach [T - O(nlogn)]
 
+'''
 def findDuplicate(arr):
     arr.sort()
     for i in range(1, len(arr)):
         if arr[i] == arr[i-1]:
             return arr[i]
+'''
+
+# hash table approach [T - O(n)]
+
+from unittest import result
+
+
+def findDuplicate(arr):
+    visited = {}
+    for element in arr:
+        if visited.get(element):
+            return element
+        else:
+            visited[element]  = True
+
+arr = [4, 3, 1, 2, 1]
+result = findDuplicate(arr)
+print(result)
