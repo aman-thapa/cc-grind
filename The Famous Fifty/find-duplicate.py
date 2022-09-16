@@ -10,8 +10,18 @@ Assume that:
 
 #brute force [T - O(n^2) ]
 
+'''
 def findDuplicate(arr):
     for i in range(len(arr)):
         for j in range(i+1, len(arr)):
             if arr[i] == arr[j]:
                 return arr[i]
+
+'''
+# sorting approach [T - O(nlogn)]
+
+def findDuplicate(arr):
+    arr.sort()
+    for i in range(1, len(arr)):
+        if arr[i] == arr[i-1]:
+            return arr[i]
