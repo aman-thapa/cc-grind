@@ -30,9 +30,7 @@ def findDuplicate(arr):
 
 # hash table approach [T - O(n)]
 
-from unittest import result
-
-
+'''
 def findDuplicate(arr):
     visited = {}
     for element in arr:
@@ -40,6 +38,27 @@ def findDuplicate(arr):
             return element
         else:
             visited[element]  = True
+
+arr = [4, 3, 1, 2, 1]
+result = findDuplicate(arr)
+print(result)
+'''
+
+# Floyd's cycle detection algorithm
+# used to detect cycyles in a linked list
+
+# T = O(n) and S = O(1)
+def findDuplicate(arr):
+    tortoise = arr[0]
+    hare = arr[arr[0]]
+    while tortoise != hare:
+        tortoise = arr[tortoise]
+        hare = arr[arr[hare]]
+    tortoise = 0
+    while tortoise != hare:
+        tortoise = arr[tortoise]
+        hare = arr[hare]
+    return tortoise
 
 arr = [4, 3, 1, 2, 1]
 result = findDuplicate(arr)
