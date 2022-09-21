@@ -34,3 +34,21 @@ def maximumSubarray(arr):
             maxSum = max(maxSum, cumulativeSum)
     return maxSum
 '''
+
+# Kadane's algorithm [T - O(n)]
+
+from unittest import result
+
+
+def maximumSubarray(arr):
+  globalSum = float("-inf")
+  localSum = 0
+  for element in arr:
+    localSum = max(element, localSum + element)
+    globalSum = max(globalSum, localSum)
+  return globalSum
+
+arr = [2, 3, -8, 4, 5]
+result = maximumSubarray(arr)
+print(result)
+
