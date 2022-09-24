@@ -5,9 +5,8 @@ substring without repeating characters.
 '''
 
 # brute force [T - O(n^3)]
-from unittest import result
 
-
+'''
 def withoutrepeating(str):
     visited = [False] * 128 #including 128 ASCII characters
     for ch in str:
@@ -25,7 +24,20 @@ def longestSubstringWithoutRepeating(str):
             if withoutrepeating(substr) and len(substr) > maxLength:
                 maxLength = len(substr)
     return maxLength
+'''
+# better approach [T - O(n)]
 
-str1 = "abcdeghf"
+def longestSubstringWithoutRepeating(str):
+    maxLength = 0
+    start = 0
+    indexes = [-1] * 128
+    for i in range(len(str)):
+        if indexes[ord(str[i])] >= start:
+            start = indexes[ord(str[i])] + 1
+        indexes[ord(str[i])] = i
+        maxLength = max(maxLength, i - start+1)
+    return maxLength
+
+str1 = "abcdbeghef"
 result = longestSubstringWithoutRepeating(str1)
 print(result)
