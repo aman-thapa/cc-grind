@@ -20,6 +20,7 @@ def findPeak(arr):
 # Binary search is a searching algorithm that can be applied on a sorted array to search for a value in O(logn).
 # T - O(logn)
 
+'''
 def findPeak(arr):
     left = 0
     right = len(arr)- 1
@@ -30,6 +31,20 @@ def findPeak(arr):
         else:
             right = mid
     return left
+'''
+
+# recursive approach [T - O(logn)]
+def findPeakRec(arr, left, right):
+    if left >= right:
+        return left
+    mid = (left + right)//2
+    if arr[mid] < arr[mid + 1]:
+        return findPeakRec(arr, mid+1, right)
+    else:
+        return findPeakRec(arr, left, mid)
+
+def findPeak(arr):
+    return findPeakRec(arr, 0, len(arr)-1)
 
 arr1 = [1, 5, 8, 8, 3, 9]
 arr2 = [1, 3, 9, 10, 5, 2, 6, 7, 4]
